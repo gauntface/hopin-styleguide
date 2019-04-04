@@ -2,11 +2,13 @@ import {copyToClipboard} from './_clipboard';
 
 const COLOR_SUFFIX = 'colors.css';
 
+const CONTAINER_SELECTOR = '.__hopin__c-color-palette';
+
 class ColorPalette {
   container: HTMLElement;
 
   constructor() {
-    this.container = document.querySelector('.cp-container');
+    this.container = document.querySelector(CONTAINER_SELECTOR);
   }
 
   updateColorPalette() {

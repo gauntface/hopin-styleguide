@@ -1,0 +1,14 @@
+.__hopin__o-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.__hopin__o-layout__section-title {
+    margin: 0;
+    font-size: 1.6em;
+    background-color: #e9ebe6;
+}
+
+.__hopin__o-layout__section-content {
+
+}
