@@ -5,7 +5,7 @@
     grid-row-gap: 1rem;
 }
 .cp-swatch {
-    grid-column: span 4;
+    grid-column: span 2;
     display:grid;
     border-radius: 8px;
     overflow:hidden;

@@ -1,0 +1,190 @@
+<html>
+<head>
+    <!-- TODO: Need some way to add this dynamically -->
+    <link rel="stylesheet" href="./example/primary-colors.css">
+    <link rel="stylesheet" href="./example/secondary-colors.css">
+    <link rel="stylesheet" href="./example/gray-colors.css">
+    <link rel="stylesheet" href="./example/dimens.css">
+    <link rel="stylesheet" href="./example/fonts.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/color-palette.css">
+</head>
+<body>
+    <section class="content">
+        <h1>Color Palette</h1>
+
+        <p>The color palette is derived from CSS variables defined in CSS files ending in `colors.css`.</p>
+
+        <div class='cp-container'>
+    
+        </div>
+
+        <hr />
+
+        <h1>Dimensions</h1>
+
+        <p>The dimension list is derived from CSS variables defined in CSS files ending in `dimens.css`.</p>
+
+        <div class='dimens-container'>
+    
+        </div>
+
+        <hr />
+
+        <h1>Fonts</h1>
+
+        <p>The fonts list is derived from CSS variables defined in CSS files ending in `fonts.css`.</p>
+
+        <div class='fonts-container'>
+    
+        </div>
+
+        <hr />
+
+        <h1>Typography</h1>
+
+        <div class='typ-container'>
+            <h1>Header 1</h1>
+
+            <h2>Header 2</h2>
+
+            <h3>Header 3</h3>
+
+            <h4>Header 4</h4>
+
+            <h5>Header 5</h5>
+
+            <h6>Header 6</h6>
+
+            <p>This is body text.</p>
+
+            <p><a href="#">This is an inline link.</a></p>
+            
+            <p><strong>This is bold body text.</strong></p>
+
+            <p><q>This is an inline quote.</q></p>
+        </div>
+
+        <hr />
+
+        <h1>Lists</h1>
+
+        <ul>
+            <li>Example Item</li>
+            <li>Example Item</li>
+            <li>Example Item</li>
+            <ul>
+                <li>Example Item</li>
+                <li>Example Item</li>
+                <li>Example Item</li>
+                <ul>
+                    <li>Example Item</li>
+                    <li>Example Item</li>
+                    <li>Example Item</li>
+                </ul>
+                <li>Example Item</li>
+                <li>Example Item</li>
+                <li>Example Item</li>
+            </ul>
+            <li>Example Item</li>
+            <li>Example Item</li>
+            <li>Example Item</li>
+        </ul>
+
+        <ol>
+            <li>Example Item</li>
+            <li>Example Item</li>
+            <li>Example Item</li>
+            <ol>
+                <li>Example Item</li>
+                <li>Example Item</li>
+                <li>Example Item</li>
+                <ol>
+                    <li>Example Item</li>
+                    <li>Example Item</li>
+                    <li>Example Item</li>
+                </ol>
+                <li>Example Item</li>
+                <li>Example Item</li>
+                <li>Example Item</li>
+            </ol>
+            <li>Example Item</li>
+            <li>Example Item</li>
+            <li>Example Item</li>
+        </ol>
+
+        <hr />
+
+        <h1>Block Quotes</h1>
+
+        <blockquote cite="https://www.huxley.net/bnw/four.html">
+            <p>Words can be like X-rays, if you use them properly – they'll go through anything. You read and you're pierced.</p>
+            <footer>- Aldous Huxley, Brave New World</footer>
+        </blockquote>
+
+        <blockquote>
+            <p>Words can be like X-rays, if you use them properly – they'll go through anything. You read and you're pierced.</p>
+        </blockquote>
+
+        <hr />
+
+        <h1>Code</h1>
+
+        <p>This is an inline <code>code snippet</code></p>
+
+        <p>This is code block without syntax highlighting</p>
+
+        <pre><code>HAI 1.2
+            CAN HAS STDIO?
+            VISIBLE "HAI WORLD!!!1!"
+          KTHXBYE</code></pre>
+
+        <p>This is code block <strong>with</strong> syntax highlighting</p>
+
+        <pre><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span></code></pre>
+        
+        <hr />
+
+        <h1>Images</h1>
+
+        <img src="./example/images/nasa-unsplash.jpg" />
+
+        <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@nasa?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from NASA"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">NASA</span></a></p>
+
+        <hr />
+
+        <h1>Iframes</h1>
+
+        <iframe width="560" height="315" sandbox="allow-scripts allow-same-origin allow-presentation" src="https://www.youtube.com/embed/2eu23_if6Lw"></iframe>
+
+        <hr />
+
+        <h1>Tables</h1>
+
+        <hr />
+
+        <h1>Video</h1>
+
+        <hr />
+
+        <h1>Figure</h1>
+
+        <figure>
+            <img src="./example/images/nasa-unsplash.jpg" alt="Some alt text"/>
+            <figcaption>
+                <p>Example Figure and Caption</p>
+            </figcaption>
+        </figure>
+    </section>
+
+    <script src="./scripts/color-palette.js"></script>
+    <script src="./scripts/typography.js"></script>
+    <script src="./scripts/dimens.js"></script>
+    <script src="./scripts/fonts.js"></script>
+</body>
+</html>

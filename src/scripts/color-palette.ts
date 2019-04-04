@@ -1,4 +1,10 @@
+import {copyToClipboard} from './_clipboard';
+
+const COLOR_SUFFIX = 'colors.css';
+
 class ColorPalette {
+  container: HTMLElement;
+
   constructor() {
     this.container = document.querySelector('.cp-container');
   }
@@ -49,16 +55,14 @@ class ColorPalette {
         swatch.appendChild(colorTab);
         swatch.addEventListener('click', (e) => {
           e.preventDefault();
-          swatch.disabled = true;
+          // TODO: Disable it such that you can't copy
+          // multiple times.
           const success = copyToClipboard(c.value);
           if (success) {
             copyText.textContent = 'Copied';
             setTimeout(() => {
               copyText.textContent = 'Copy';
-              swatch.disabled = false;
             }, 1000);
-          } else {
-            swatch.disabled = false;
           }
         });
 
@@ -74,30 +78,36 @@ class ColorPalette {
     }
   }
 
-  getColors() {
-    const groups = [];
+  getColors(): ColorGroup[] {
+    const groups: ColorGroup[] = [];
     for (const s of document.styleSheets) {
-      const stylesheet = s.valueOf(':root');
-      if (!stylesheet) {
-        continue;
-      }
-
       try {
-        const group = {
-          href: stylesheet.href,
+        if (s.href.lastIndexOf(COLOR_SUFFIX) !== s.href.length - COLOR_SUFFIX.length) {
+          continue;
+        }
+
+        const group: ColorGroup = {
+          href: s.href,
           colors: [],
         };
 
-        for (const r of stylesheet.rules) {
-          for (const e of r.styleMap.entries()) {
-            const name = e[0];
-            const value = e[1][0][0];
-            if (name.indexOf('--') === 0) {
-              console.log(name, value);
-              group.colors.push({
-                name,
-                value,
-              });
+        const cssStylesheet = s as CSSStyleSheet;
+        for (const r of cssStylesheet.cssRules) {
+          const cssStyleRule = r as {
+            styleMap?: StyleMap
+          };
+          if (cssStyleRule['styleMap']) {
+            const map = cssStyleRule['styleMap'];
+            for (const e of map.entries()) {
+              // The format of e is ["<param name>", [["<value>"]]]
+              const name = e[0] as string;
+              if (name.indexOf('--') === 0) {
+                const value = e[1][0][0];
+                group.colors.push({
+                  name,
+                  value,
+                });
+              }
             }
           }
         }
@@ -107,7 +117,7 @@ class ColorPalette {
       } catch (err) {
         // External stylesheets will not be accessible from JavaScript
         // in which case this error will be thrown.
-        console.error(`Unable to get colors from ${stylesheet.href}: `, err);
+        console.error(`Unable to read styles for ${s.href}`, err);
       }
     }
     return groups;
@@ -116,7 +126,6 @@ class ColorPalette {
 
 window.addEventListener('load', () => {
   const cp = new ColorPalette();
-  console.log(cp.getColors());
   cp.updateColorPalette();
   /* const colorPalette = document.querySelector('.color-palette');
 colorPalette.innerHTML = '';
@@ -136,3 +145,17 @@ for (const s of document.styleSheets) {
   }
 }*/
 });
+
+interface ColorGroup {
+  href: string;
+  colors: ColorVariable[];
+}
+
+interface ColorVariable {
+  name: string;
+  value: string;
+}
+
+interface StyleMap {
+  entries: () => Array<string|Array<string>>;
+}

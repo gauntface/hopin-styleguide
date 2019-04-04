@@ -1,4 +1,4 @@
-function copyToClipboard(txt) {
+export function copyToClipboard(txt: string): boolean {
     const hiddenElement = document.createElement('div');
     hiddenElement.textContent = txt;
     document.body.appendChild(hiddenElement);
