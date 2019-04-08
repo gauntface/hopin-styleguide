@@ -22,6 +22,7 @@ gulp.task('copy',
   gulp.parallel(
     () => gulp.src(path.join(src, '**', '*.html')).pipe(gulp.dest(dst)),
     () => gulp.src(path.join(__dirname, 'example', '**', '*')).pipe(gulp.dest(path.join(dst, 'example'))),
+    () => gulp.src(path.join(__dirname, 'gauntface', '**', '*')).pipe(gulp.dest(path.join(dst, 'gauntface'))),
   ),
 );
 
@@ -58,10 +59,14 @@ gulp.task('watch', gulp.parallel(
   () => {
     const opts = {
       ignoreInitial: false,
+      ignored: [
+        path.join(dst, '**', '*'),
+        path.join(__dirname, 'node_modules', '**', '*'),
+      ],
       queue: true,
     };
-    gulp.watch(path.join(src, '**', '*.ts'), opts, gulp.series('ts'));
-    gulp.watch(path.join(src, '**', '*.css'), opts, gulp.series('css'));
-    gulp.watch(path.join(src, '**', '*'), opts, gulp.series('copy'));
+    gulp.watch(path.join(__dirname, '**', '*.ts'), opts, gulp.series('ts'));
+    gulp.watch(path.join(__dirname, '**', '*.css'), opts, gulp.series('css'));
+    gulp.watch(path.join(__dirname, '**', '*'), opts, gulp.series('copy'));
   },
 ));

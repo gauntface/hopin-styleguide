@@ -38,9 +38,10 @@ class ColorPalette {
       stylesheetColors.classList.add(SWATCH_GROUP_CLASS);
 
       for (const c of g.colors) {
+         // Use c.value to get the actual color value
         const swatchColor = document.createElement('div');
         swatchColor.classList.add(SWATCH_COLOR_CLASS);
-        swatchColor.style.backgroundColor = c.value;
+        swatchColor.style.backgroundColor = `var(${c.name})`;
 
         const swatchFooter = document.createElement('div');
         swatchFooter.classList.add(SWATCH_FOOTER_CLASS);
