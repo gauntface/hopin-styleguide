@@ -2,13 +2,18 @@ import {copyToClipboard} from './_clipboard';
 
 const COLOR_SUFFIX = 'colors.css';
 
-const CONTAINER_SELECTOR = '.__hopin__c-color-palette';
+const CONTAINER_CLASS = '__hopin__js-color-palette';
+const SWATCH_GROUP_CLASS = '__hopin__c-swatch-group';
+const SWATCH_CLASS = '__hopin__c-swatch';
+const SWATCH_COLOR_CLASS = '__hopin__c-swatch__color';
+const SWATCH_FOOTER_CLASS = '__hopin__c-swatch__footer';
+const SWATCH_COPY_CLASS = '__hopin__c-swatch__copytext';
 
 class ColorPalette {
   container: HTMLElement;
 
   constructor() {
-    this.container = document.querySelector(CONTAINER_SELECTOR);
+    this.container = document.querySelector(`.${CONTAINER_CLASS}`);
   }
 
   updateColorPalette() {
@@ -30,36 +35,35 @@ class ColorPalette {
       }
 
       const stylesheetColors = document.createElement('div');
-      stylesheetColors.classList.add('cp-colors');
+      stylesheetColors.classList.add(SWATCH_GROUP_CLASS);
 
       for (const c of g.colors) {
-        const colorSwatch = document.createElement('div');
-        colorSwatch.classList.add('cp-swatch_color');
-        colorSwatch.style.backgroundColor = c.value;
+        const swatchColor = document.createElement('div');
+        swatchColor.classList.add(SWATCH_COLOR_CLASS);
+        swatchColor.style.backgroundColor = c.value;
 
-        const colorTab = document.createElement('div');
-        colorTab.classList.add('cp-swatch_tab');
+        const swatchFooter = document.createElement('div');
+        swatchFooter.classList.add(SWATCH_FOOTER_CLASS);
 
-        const colorName = document.createElement('soan');
-        colorName.classList.add('cp-swatch_name');
+        const colorName = document.createElement('span');
         colorName.textContent = c.name;
 
         const copyText = document.createElement('div');
-        copyText.classList.add('cp-swatch_copytext');
+        copyText.classList.add(SWATCH_COPY_CLASS);
         copyText.textContent = 'Copy';
 
-        colorTab.appendChild(colorName);
-        colorTab.appendChild(copyText);
+        swatchFooter.appendChild(colorName);
+        swatchFooter.appendChild(copyText);
 
         const swatch = document.createElement('div');
-        swatch.classList.add('cp-swatch');
-        swatch.appendChild(colorSwatch);
-        swatch.appendChild(colorTab);
+        swatch.classList.add(SWATCH_CLASS);
+        swatch.appendChild(swatchColor);
+        swatch.appendChild(swatchFooter);
         swatch.addEventListener('click', (e) => {
           e.preventDefault();
           // TODO: Disable it such that you can't copy
           // multiple times.
-          const success = copyToClipboard(c.value);
+          const success = copyToClipboard(c.name);
           if (success) {
             copyText.textContent = 'Copied';
             setTimeout(() => {

@@ -1,8 +1,10 @@
+const CONTAINER_CLASS = '__hopin__js-typography';
+
 class Typography {
     container: HTMLElement;
 
     constructor() {
-        this.container = document.querySelector('.typ-container') as HTMLElement;
+        this.container = document.querySelector(`.${CONTAINER_CLASS}`) as HTMLElement;
     }
 
     updateTypeInfo() {
