@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="./gauntface/elements/body.css">
     <link rel="stylesheet" href="./gauntface/elements/img.css">
     <link rel="stylesheet" href="./gauntface/elements/code.css">
+    <link rel="stylesheet" href="./gauntface/elements/table.css">
+    <link rel="stylesheet" href="./gauntface/elements/iframe.css">
+    <link rel="stylesheet" href="./gauntface/elements/pre.css">
+    <link rel="stylesheet" href="./gauntface/components/syntax-highlighting.css">
+    <link rel="stylesheet" href="./gauntface/utils/aspect-ratio.css">
     <link rel="stylesheet" href="./gauntface/third_party/dank-mono/dank-mono.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--<link rel="stylesheet" href="./gauntface/all.css">-->
@@ -167,15 +172,15 @@
             <p>This is code block without syntax highlighting</p>
     
             <pre><code>HAI 1.2
-                CAN HAS STDIO?
-                VISIBLE "HAI WORLD!!!1!"
-              KTHXBYE</code></pre>
+  CAN HAS STDIO?
+  VISIBLE "HAI WORLD!!!1!"
+KTHXBYE</code></pre>
     
             <p>This is code block <strong>with</strong> syntax highlighting</p>
     
             <pre><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-              <span class="token punctuation">}</span></code></pre>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
     </section>
 
     <!-- Iframe -->
@@ -183,7 +188,10 @@
         <h1>Iframe</h1>
     </section>
     <section class="__hopin__o-layout__section-content __hopin__js-typography">
-        <iframe width="560" height="315" sandbox="allow-scripts allow-same-origin allow-presentation" src="https://www.youtube.com/embed/2eu23_if6Lw"></iframe>
+        <iframe src="https://www.youtube.com/embed/2eu23_if6Lw?color=white&modestbranding=1&rel=1"></iframe>
+        <div class="u-aspect-ratio__4-3">
+            <iframe src="https://www.youtube.com/embed/2eu23_if6Lw?color=white&modestbranding=1&rel=1"></iframe>
+        </div>
     </section>
 
     <!-- Table -->
@@ -345,6 +353,14 @@
                 <p>Example Figure and Caption</p>
             </figcaption>
         </figure>
+    </section>
+
+    <!-- Buttons -->
+    <section class="__hopin__o-layout__section-title">
+        <h1>Buttons</h1>
+    </section>
+    <section class="__hopin__o-layout__section-content __hopin__js-typography">
+        <p><button>Hello</button></p>
     </section>
   </div>
 
