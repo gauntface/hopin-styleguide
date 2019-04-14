@@ -1,7 +1,7 @@
 ---
 styles:
   inline:
-    - ../theme/components/swatch/swatch.css
+    - ../src/components/swatch/swatch.css
   sync:
     - /gauntface/styleguide.css
     - /gauntface/variables/_colors.css
