@@ -1,0 +1,32 @@
+---
+# styles:
+#   inline:
+#     - './static/styles/base.css'
+#     - './static/styles/default-tmpl.css'
+# scripts:
+#   async:
+#     - '/scripts/analytics.js'
+partials:
+  - './components/header/header.tmpl'
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{page.title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFFFFF"/>
+
+    {{#if page.excerpt}}
+        <meta name="Description" content="{{page.excerpt}}">
+    {{/if}}
+    <link rel="manifest" href="/manifest.json">
+
+    {{hopin_headAssets}}
+</head>
+<body>
+    {{> ./components/header/header.tmpl}}
+    {{{content}}}
+    
+    {{hopin_bodyAssets}}
+</body>
+</html>

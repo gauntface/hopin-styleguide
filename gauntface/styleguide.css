@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+@import './variables/_colors.css';
+@import './variables/_fonts.css';
+@import './elements/body.css';
+
+:root {
+    --hopin-background-color: var(--electric-yellow);
+    --hopin-swatch-border-color-hover: var(--eggplant-purple);
+    --hopin-swatch-copy-color: var(--teal);
+}

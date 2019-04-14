@@ -1,0 +1,6 @@
+.__hopin__c-header {
+    display: flex;
+    flex-direction: row;
+    height: var(--hopin-header-height-mobile, 60px);
+    background-color: var(--hopin-background-color, #dcdde1);
+}
