@@ -8,4 +8,6 @@
     --hopin-background-color: var(--electric-yellow);
     --hopin-swatch-border-color-hover: var(--eggplant-purple);
     --hopin-swatch-copy-color: var(--teal);
+    --hopin-swatch-light-text-color: var(--white);
+    --hopin-swatch-dark-text-color: var(--eggplant-purple);
 }

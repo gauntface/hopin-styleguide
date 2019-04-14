@@ -1,0 +1,13 @@
+.__hopin__c-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: var(--hopin-header-height-mobile, 60px);
+    background-color: var(--hopin-background-color, #dcdde1);
+    padding: 15px 40px;
+}
+
+.__hopin__c-header__title {
+    font-weight: var(--hopin-header-font-weight, normal);
+}
