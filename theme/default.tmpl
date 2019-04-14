@@ -7,7 +7,7 @@
 #   async:
 #     - '/scripts/analytics.js'
 partials:
-  - './components/header/header.tmpl'
+  - '../src/components/header/header.tmpl'
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,7 @@ partials:
     {{hopin_headAssets}}
 </head>
 <body>
-    {{> ./components/header/header.tmpl}}
+    {{> ../src/components/header/header.tmpl}}
     {{{content}}}
     
     {{hopin_bodyAssets}}

@@ -46,26 +46,33 @@ class ColorPalette {
         hexValue.classList.add(SWATCH_HEX_CLASS);
         hexValue.textContent = c.value;
 
+        const varName = document.createElement('span');
+        varName.classList.add(SWATCH_HEX_CLASS);
+        varName.textContent = c.name;
+
         // TODO: Use specific fonts applied to text instead of black and white
         const distanceToBlack = this.distance(this.hexToRGB(c.value), this.hexToRGB('#000000'));
         const distanceToWhite = this.distance(this.hexToRGB(c.value), this.hexToRGB('#FFFFFF'));
 
         if (distanceToBlack > distanceToWhite) {
           hexValue.classList.add(SWATCH_HEX_DARK_COLOR);
+          varName.classList.add(SWATCH_HEX_DARK_COLOR);
         } else {
           hexValue.classList.add(SWATCH_HEX_LIGHT_COLOR);
+          varName.classList.add(SWATCH_HEX_LIGHT_COLOR);
         }
 
         const swatchColor = document.createElement('div');
         swatchColor.classList.add(SWATCH_COLOR_CLASS);
         swatchColor.style.backgroundColor = `var(${c.name})`;
+        swatchColor.appendChild(varName);
         swatchColor.appendChild(hexValue);
 
         const swatchFooter = document.createElement('div');
         swatchFooter.classList.add(SWATCH_FOOTER_CLASS);
 
         const colorName = document.createElement('span');
-        colorName.textContent = c.name;
+        colorName.textContent = this.friendlyName(c.name);
 
         const copyText = document.createElement('div');
         copyText.classList.add(SWATCH_COPY_CLASS);
@@ -170,6 +177,18 @@ class ColorPalette {
     Math.pow((c1.Green - c2.Green), 2) +
     Math.pow((c1.Blue - c2.Blue), 2);
     return Math.sqrt(d);
+  }
+
+  friendlyName(varName: string): string {
+    const parts = varName.split('-');
+    const words: string[] = [];
+    for (const p of parts) {
+      if (p == '') {
+        continue;
+      }
+      words.push(p.charAt(0).toUpperCase()  + p.slice(1).toLowerCase());
+    }
+    return words.join(' ');
   }
 }
 
