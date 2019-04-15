@@ -1,0 +1,31 @@
+.__hopin__l-main {
+    display: grid;
+    grid-template-areas:   "header header"
+                        "sidebar content ";
+    grid-template-rows:    100px 1fr;
+    grid-template-columns: 200px 1fr;
+
+    min-height: 100%;
+}
+
+.__hopin__l-main__header {
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--hopin-background-color, #dcdde1);
+}
+
+.__hopin__l-main__header-title {
+    font-weight: var(--hopin-header-font-weight, normal);
+}
+
+.__hopin__l-main__sidebar {
+    grid-area: sidebar;
+    background-color: var(--hopin-main-sidebar-bg-color, white);
+}
+
+.__hopin__l-main__content {
+    padding: var(--hopin-main-content-vert-padding, 45px) var(--hopin-main-content-hori-padding, 48px);
+    grid-area: content;
+}

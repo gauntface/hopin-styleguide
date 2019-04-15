@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
-@import './variables/_colors.css';
+@import './variables/_primary-colors.css';
+@import './variables/_seconday-colors.css';
 @import './variables/_fonts.css';
 @import './elements/body.css';
 
@@ -10,4 +11,12 @@
     --hopin-swatch-copy-color: var(--teal);
     --hopin-swatch-light-text-color: var(--white);
     --hopin-swatch-dark-text-color: var(--eggplant-purple);
+    --hopin-main-sidebar-bg-color: var(--soft-gray);
+
+    --hopin-header-logo-display: block;
+    --hopin-header-logo-bg-img: url('/gauntface/components/logo/logo-128.svg');
+}
+
+.__hopin__c-swatch-group__href {
+    display: none;
 }

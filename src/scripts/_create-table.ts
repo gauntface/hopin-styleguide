@@ -1,4 +1,31 @@
+import {Variable} from './_variable-group';
+import {copyToClipboard} from './_clipboard';
+
 const VAR_TABLE_CLASS = '__hopin__c-variable-table';
+
+export function createVariableTable(variables: Variable[]): HTMLElement {
+    const columns = ["Variable Name", "Value", ""];
+    const rows: Array<Array<string|HTMLElement>> = []
+    for (const v of variables) {
+        const copyText = document.createElement('div');
+      copyText.textContent = 'Copy';
+      copyText.addEventListener('click', (e) => {
+        e.preventDefault();
+        const success = copyToClipboard(v.variableName);
+        if (success) {
+          copyText.textContent = 'Copied';
+          setTimeout(() => {
+            copyText.textContent = 'Copy';
+          }, 1000);
+        }
+      });
+      rows.push([v.variableName, v.value, copyText]);
+    }
+    return createTable({
+        columns,
+        rows,
+    });
+}
 
 export function createTable(data: VARIABLE_TABLE): HTMLElement {
     const table = document.createElement('table');

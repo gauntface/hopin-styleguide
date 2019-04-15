@@ -6,11 +6,16 @@
 # scripts:
 #   async:
 #     - '/scripts/analytics.js'
+styles:
+  inline:
+    - '../src/layouts/full-height/full-height.css'
+    - '../src/layouts/main/main.css'
 partials:
+  - '../src/components/sidebar/sidebar.tmpl'
   - '../src/components/header/header.tmpl'
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="__hopin__l-fh">
 <head>
     <title>{{page.title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,9 +28,16 @@ partials:
 
     {{hopin_headAssets}}
 </head>
-<body>
-    {{> ../src/components/header/header.tmpl}}
+<body class="__hopin__l-main">
+    <div class="__hopin__l-main__header">
+        {{> ../src/components/header/header.tmpl}}
+    </div>
+    <div class="__hopin__l-main__sidebar">
+        {{> ../src/components/sidebar/sidebar.tmpl}}
+    </div>
+    <div class="__hopin__l-main__content">
     {{{content}}}
+    </div>
     
     {{hopin_bodyAssets}}
 </body>
