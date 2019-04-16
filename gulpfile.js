@@ -49,6 +49,7 @@ gulp.task('build',
       'css',
       'ts',
     ),
+    'static-site',
   )
 );
 
