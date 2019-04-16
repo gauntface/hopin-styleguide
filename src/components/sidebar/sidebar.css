@@ -1,0 +1,16 @@
+.__hopin__c-sidebar, .__hopin__c-sidebar ul {
+    list-style: none;
+    margin: 0;
+}
+
+.__hopin__c-sidebar {
+    padding: var(--hopin-sidebar-vert-padding, 45px) var(--hopin-sidebar-hori-padding, 40px);
+}
+
+.__hopin__c-sidebar ul {
+    padding-left: var(--hopin-sidebar-nested-hori-padding, 20px);
+}
+
+.__hopin__c-sidebar a {
+    text-decoration: none;
+}
