@@ -1,4 +1,5 @@
 const path = require('path');
+const {exec} = require('child_process');
 const http = require('http');
 const gulp = require('gulp');
 const fs = require('fs-extra');
@@ -29,6 +30,16 @@ gulp.task('copy',
 gulp.task('css', css.gulpBuild());
 
 gulp.task('ts', tsBrowser.gulpBuild('hopin.styleguide'));
+
+gulp.task('static-site', (done) => exec('npm run static-site', (err, stdout, stderr) => {
+  if (stdout) {
+    console.log(stdout);
+  }
+  if (stderr) {
+    console.log(stderr);
+  }
+  done(err);
+}));
 
 gulp.task('build',
   gulp.series(
@@ -65,8 +76,9 @@ gulp.task('watch', gulp.parallel(
       ],
       queue: true,
     };
-    gulp.watch(path.join(__dirname, '**', '*.ts'), opts, gulp.series('ts'));
-    gulp.watch(path.join(__dirname, '**', '*.css'), opts, gulp.series('css'));
+    gulp.watch(path.join(__dirname, '**', '*.ts'), opts, gulp.series('ts', 'static-site'));
+    gulp.watch(path.join(__dirname, '**', '*.css'), opts, gulp.series('css', 'static-site'));
     gulp.watch(path.join(__dirname, '**', '*'), opts, gulp.series('copy'));
+    gulp.watch(path.join(__dirname, '**', '*.md'), opts, gulp.series('static-site'));
   },
 ));

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A styleguide generation tool",
   "scripts": {
-    "build": "rm -rf ./build/ && gulp build && hopin-static-site",
+    "static-site": "hopin-static-site",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
