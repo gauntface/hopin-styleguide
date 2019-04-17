@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 
 @import './variables/_primary-colors.css';
 @import './variables/_secondary-colors.css';
@@ -6,6 +6,10 @@
 @import './variables/_dimens.css';
 @import './elements/body.css';
 @import './elements/table.css';
+@import './elements/h1.css';
+@import './elements/h2.css';
+@import './elements/h3.css';
+@import './elements/h4.css';
 
 :root {
     --hopin-background-color: var(--electric-yellow);
