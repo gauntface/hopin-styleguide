@@ -5,6 +5,7 @@
 @import './variables/_fonts.css';
 @import './variables/_dimens.css';
 @import './elements/body.css';
+@import './elements/table.css';
 
 :root {
     --hopin-background-color: var(--electric-yellow);

@@ -3,11 +3,11 @@ table {
 }
 
 thead {
-    background: var(--gray);
+    background: var(--soft-gray);
 }
 
 th, td {
-    border: 1px solid var(--gray-light);
+    border: 1px solid var(--gray);
     padding: var(--padding);
 }
 
