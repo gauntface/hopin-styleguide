@@ -10,7 +10,3 @@ th, td {
     border: 1px solid var(--gray);
     padding: var(--padding);
 }
-
-tr:nth-child(even){
-    background-color: var(--gray-v-light);
-}
