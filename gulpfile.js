@@ -80,6 +80,6 @@ gulp.task('watch', gulp.parallel(
     gulp.watch(path.join(__dirname, '**', '*.ts'), opts, gulp.series('ts', 'static-site'));
     gulp.watch(path.join(__dirname, '**', '*.css'), opts, gulp.series('css', 'static-site'));
     gulp.watch(path.join(__dirname, '**', '*'), opts, gulp.series('copy'));
-    gulp.watch(path.join(__dirname, '**', '*.md'), opts, gulp.series('static-site'));
+    gulp.watch(path.join(__dirname, '**', '*.{md,tmpl}'), opts, gulp.series('static-site'));
   },
 ));
