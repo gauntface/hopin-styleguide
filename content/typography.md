@@ -17,10 +17,8 @@ The fonts list is derived from CSS variables defined in CSS files ending in `fon
     <h2>Header 2</h2>
     <h3>Header 3</h3>
     <h4>Header 4</h4>
-    <h5>Header 5</h5>
-    <h6>Header 6</h6>
-    <p>This is body text.</p>
-    <p><a href="#">This is an inline link.</a></p>
-    <p><strong>This is bold body text.</strong></p>
-    <p><q>This is an inline quote.</q></p>
+    <p>This is body text</p>
+    <p><a href="#">This is an inline link</a></p>
+    <p><strong>This is bold body text</strong></p>
+    <p><q>This is an inline quote</q></p>
 </section>
