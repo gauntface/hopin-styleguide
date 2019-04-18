@@ -24,6 +24,7 @@ gulp.task('copy',
     () => gulp.src(path.join(src, '**', '*.html')).pipe(gulp.dest(dst)),
     () => gulp.src(path.join(__dirname, 'example', '**', '*')).pipe(gulp.dest(path.join(dst, 'example'))),
     () => gulp.src(path.join(__dirname, 'gauntface', '**', '*')).pipe(gulp.dest(path.join(dst, 'gauntface'))),
+    () => gulp.src(path.join(__dirname, 'third_party', '**', '*')).pipe(gulp.dest(path.join(dst, 'third_party'))),
   ),
 );
 

@@ -3,9 +3,25 @@ const ORIG_TEXT_ATTRIB = '__hopin_typograhy_orig_text';
 
 class Typography {
     container: HTMLElement;
+    canvas1: HTMLCanvasElement;
+    canvas2: HTMLCanvasElement
 
     constructor() {
         this.container = document.querySelector(`.${CONTAINER_CLASS}`) as HTMLElement;
+        this.canvas1 = this.createCanvas();
+        this.canvas2 = this.createCanvas();
+
+        document.body.appendChild(this.canvas1);
+        document.body.appendChild(this.canvas2);
+    }
+
+    createCanvas(): HTMLCanvasElement {
+        const canvas = document.createElement("canvas");
+        canvas.width = 100;
+        canvas.height = 100;
+        canvas.style.display = 'none';
+        canvas.style.visibility = 'hidden';
+        return canvas;
     }
 
     updateTypeInfo() {
@@ -14,12 +30,12 @@ class Typography {
             if (e.childElementCount > 0) {
                 elementToCheck = e.children[0];
             }
-            
-            this.getCurrentFont(eStyles.fontFamily)
 
             const eStyles = window.getComputedStyle(elementToCheck);
+            const currentFont = this.getCurrentFont(eStyles.fontFamily);
+            
             // TODO Find out which font is actually in use
-            const detailText = `: "${eStyles.fontFamily}" ${eStyles.fontWeight}, ${eStyles.fontSize}`;
+            const detailText = `: ${currentFont} ${eStyles.fontWeight}, ${eStyles.fontSize}`;
 
             if (elementToCheck === e) {
                 let origText = elementToCheck.getAttribute(ORIG_TEXT_ATTRIB);
@@ -39,12 +55,43 @@ class Typography {
     getCurrentFont(fontFamily: string) {
         const individualFonts = fontFamily.split(",").map((f) => f.trim());
         for (const f of individualFonts) {
-            this.testFont(f)
+            if (this.isfontUsed(f)) {
+                return f;
+            }
         }
+        return '<Browser Default>';
     }
 
-    testFont(f: string) {
-        console.log("Testing font ", f);
+    isfontUsed(f: string) {
+        const imgData1 = this.printText(this.canvas1, "Test.", [f, "serif"]);
+        const imgData2 = this.printText(this.canvas2, "Test.", [f, "sans-serif"]);
+
+        return this.isImgDataMatching(imgData1, imgData2);
+    }
+
+    isImgDataMatching(data1: ImageData, data2: ImageData): boolean {
+        if (data1.data.length != data2.data.length) {
+            return false;
+        }
+
+        for (let i = 0; i < data1.data.length; i++) {
+            if (data1.data[i] != data2.data[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    printText(canvas: HTMLCanvasElement, text: string, fonts: string[]): ImageData {
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = `40px ${fonts.join(", ")}`;
+        ctx.textAlign = "center"; 
+        ctx.fillText(text, 50, 50);
+
+        return ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
 }
 

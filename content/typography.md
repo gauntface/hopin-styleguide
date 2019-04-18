@@ -21,4 +21,6 @@ The fonts list is derived from CSS variables defined in CSS files ending in `fon
     <p><a href="#">This is an inline link</a></p>
     <p><strong>This is bold body text</strong></p>
     <p><q>This is an inline quote</q></p>
+    <p><code>This is an inline code snippet</code></p>
+    <pre><code>This is a code block</code></pre>
 </section>
