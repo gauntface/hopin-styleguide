@@ -17,6 +17,7 @@ class Typography {
 
             const eStyles = window.getComputedStyle(e);
             
+            this.getCurrentFont(eStyles.fontFamily)
 
             const infoElement = document.createElement('div');
             infoElement.classList.add('typ-info');
@@ -31,6 +32,17 @@ class Typography {
             this.container.insertBefore(infoElement, before);
             updatedTags.push(e.tagName);
         }
+    }
+
+    getCurrentFont(fontFamily: string) {
+        const individualFonts = fontFamily.split(",").map((f) => f.trim());
+        for (const f of individualFonts) {
+            this.testFont(f)
+        }
+    }
+
+    testFont(f: string) {
+        console.log("Testing font ", f);
     }
 }
 
