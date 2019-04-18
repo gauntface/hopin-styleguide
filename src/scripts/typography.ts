@@ -1,4 +1,5 @@
 const CONTAINER_CLASS = '__hopin__js-typography';
+const ORIG_TEXT_ATTRIB = '__hopin_typograhy_orig_text';
 
 class Typography {
     container: HTMLElement;
@@ -8,28 +9,29 @@ class Typography {
     }
 
     updateTypeInfo() {
-        const elements = this.container.querySelectorAll('*');
-        const updatedTags: string[] = [];
-        for (const e of elements) {
-            if (updatedTags.includes(e.tagName)) {
-                continue;
+        for (const e of this.container.children) {
+            let elementToCheck = e;
+            if (e.childElementCount > 0) {
+                elementToCheck = e.children[0];
             }
-
-            const eStyles = window.getComputedStyle(e);
             
 
-            const infoElement = document.createElement('div');
-            infoElement.classList.add('typ-info');
-            infoElement.textContent = `Font: "${eStyles.fontFamily}" Size: ${eStyles.fontSize} Weight: ${eStyles.fontSize}`;
-            let currentElement = e;
-            let before = currentElement.nextSibling;
-            while (currentElement.parentElement !== this.container) {
-                currentElement = currentElement.parentElement;
-                before = currentElement.nextSibling;
-                console.log(currentElement, currentElement.parentElement);
+            const eStyles = window.getComputedStyle(elementToCheck);
+            // TODO Find out which font is actually in use
+            const detailText = `: "${eStyles.fontFamily}" ${eStyles.fontWeight}, ${eStyles.fontSize}`;
+
+            if (elementToCheck === e) {
+                let origText = elementToCheck.getAttribute(ORIG_TEXT_ATTRIB);
+                if (!origText) {
+                    origText = elementToCheck.textContent;
+                    elementToCheck.setAttribute(ORIG_TEXT_ATTRIB, origText);
+                    elementToCheck.textContent = `${origText}${detailText}`
+                }
+            } else {
+                const span = document.createElement('span');
+                span.textContent = detailText;
+                e.appendChild(span);
             }
-            this.container.insertBefore(infoElement, before);
-            updatedTags.push(e.tagName);
         }
     }
 }
