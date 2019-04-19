@@ -6,6 +6,7 @@ styles:
 scripts:
   sync:
     - /scripts/typography.js
+    - /scripts/classnames.js
 ---
 
 # Typography
