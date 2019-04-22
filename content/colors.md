@@ -10,7 +10,6 @@ styles:
 scripts:
   sync:
     - /scripts/colors.js
-    - /scripts/classnames.js
 ---
 
 # Colors
