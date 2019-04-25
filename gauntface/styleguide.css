@@ -22,6 +22,14 @@
     --hopin-swatch-dark-text-color: var(--eggplant-purple);
     --hopin-main-sidebar-bg-color: var(--soft-gray);
 
+    --hopin-home-item-outline: var(--eggplant-purple);
+    --hopin-home-item-color-1: var(--electric-yellow);
+    --hopin-home-item-color-2: var(--teal);
+    --hopin-home-item-color-3: var(--pink);
+
+    --hopin-home-item-border-color: var(--gray);
+    --hopin-home-item-shadow-color: var(--gray);
+
     --hopin-header-logo-display: block;
     --hopin-header-logo-bg-img: url('/gauntface/components/logo/logo-128.svg');
 }

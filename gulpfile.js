@@ -21,7 +21,7 @@ gulp.task('clean', async () => {
 
 gulp.task('copy',
   gulp.parallel(
-    () => gulp.src(path.join(src, '**', '*.html')).pipe(gulp.dest(dst)),
+    () => gulp.src(path.join(src, '**', '*.{html,svg}')).pipe(gulp.dest(dst)),
     () => gulp.src(path.join(__dirname, 'example', '**', '*')).pipe(gulp.dest(path.join(dst, 'example'))),
     () => gulp.src(path.join(__dirname, 'gauntface', '**', '*')).pipe(gulp.dest(path.join(dst, 'gauntface'))),
     () => gulp.src(path.join(__dirname, 'third_party', '**', '*')).pipe(gulp.dest(path.join(dst, 'third_party'))),
@@ -81,6 +81,6 @@ gulp.task('watch', gulp.parallel(
     gulp.watch(path.join(__dirname, '**', '*.ts'), opts, gulp.series('ts', 'static-site'));
     gulp.watch(path.join(__dirname, '**', '*.css'), opts, gulp.series('css', 'static-site'));
     gulp.watch(path.join(__dirname, '**', '*'), opts, gulp.series('copy'));
-    gulp.watch(path.join(__dirname, '**', '*.{md,tmpl}'), opts, gulp.series('static-site'));
+    gulp.watch(path.join(__dirname, '**', '*.{md,tmpl,svg}'), opts, gulp.series('static-site'));
   },
 ));
