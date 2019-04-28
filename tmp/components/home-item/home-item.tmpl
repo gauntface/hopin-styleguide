@@ -1,0 +1,19 @@
+---
+styles:
+  inline:
+    - ./home-item.css
+---
+<a href="{{args.link}}" class="__hopin__c-home-item--link">
+  <div class="__hopin__c-home-item">
+    <div class="__hopin__c-home-item--content">
+      {{#if args.img}}
+        {{hopin_loadComponent args.img }}
+      {{else}}
+        {{args.content}}
+      {{/if}}
+    </div>
+    <div class="__hopin__c-home-item--footer">
+      <p>{{args.title}}</p>
+    </div>
+  </div>
+</a>
