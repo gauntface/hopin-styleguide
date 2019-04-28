@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/gauntface/hopin-styleguide#readme",
   "devDependencies": {
-    "@hopin/static-site": "0.2.0",
+    "@hopin/static-site": "0.3.0",
     "@hopin/wbt-css": "0.0.17",
     "@hopin/wbt-ts-browser": "0.0.17",
     "finalhandler": "1.1.1",
