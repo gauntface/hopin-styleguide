@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as json5 from 'json5';
-import {buildSite} from '@hopin/static-site';
+import {buildSite, Config} from '@hopin/static-site';
 import {logger} from './utils/logger'
 import {prettyPath} from './utils/prettypath';
 
@@ -16,7 +16,9 @@ export async function build(dir: string) {
 
     // TODO: Generate list of assets
 
-    await buildSite(path.join(__dirname, '..', 'template'));
+    await buildSite(path.join(__dirname, '..', 'template'), {
+        outputPath: "../generated-styleguide",
+    } as Config);
 }
 
 async function getThemeFile(dir: string): Promise<Theme|null> {

@@ -11,7 +11,7 @@ partials:
 ---
 
 <div class="__hopin__l-home-grid">
-  <a href="/colors.html" class="__hopin__c-home-item--link">
+  <a href="/varaibles/colors.html" class="__hopin__c-home-item--link">
     <div class="__hopin__c-home-item">
       <div class="__hopin__c-home-item--content">
         {{> ../components/home-item/images/colors-symbol.svg}}
@@ -22,7 +22,7 @@ partials:
     </div>
   </a>
 
-  <a href="/dimensions.html" class="__hopin__c-home-item--link">
+  <a href="/varaibles/dimensions.html" class="__hopin__c-home-item--link">
     <div class="__hopin__c-home-item">
       <div class="__hopin__c-home-item--content">
         {{> ../components/home-item/images/dimens-symbol.svg}}
@@ -33,7 +33,7 @@ partials:
     </div>
   </a>
 
-  <a href="/fonts.html" class="__hopin__c-home-item--link">
+  <a href="/varaibles/fonts.html" class="__hopin__c-home-item--link">
     <div class="__hopin__c-home-item">
       <div class="__hopin__c-home-item--content">
         ABC
