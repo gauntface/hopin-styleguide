@@ -8,10 +8,13 @@ partials:
   - ../components/home-item/images/dimens-symbol.svg
   - ../components/home-item/images/layout-symbol.svg
   - ../components/home-item/images/component-symbol.svg
+  - ../components/home-item/home-item.tmpl
 ---
 
+{{hopin_loadComponent "../components/home-item/home-item.tmpl" link="/variables/colors.html" title="Colors"}}
+
 <div class="__hopin__l-home-grid">
-  <a href="/varaibles/colors.html" class="__hopin__c-home-item--link">
+  <a href="/variables/colors.html" class="__hopin__c-home-item--link">
     <div class="__hopin__c-home-item">
       <div class="__hopin__c-home-item--content">
         {{> ../components/home-item/images/colors-symbol.svg}}
@@ -22,7 +25,7 @@ partials:
     </div>
   </a>
 
-  <a href="/varaibles/dimensions.html" class="__hopin__c-home-item--link">
+  <a href="/variables/dimensions.html" class="__hopin__c-home-item--link">
     <div class="__hopin__c-home-item">
       <div class="__hopin__c-home-item--content">
         {{> ../components/home-item/images/dimens-symbol.svg}}
@@ -33,7 +36,7 @@ partials:
     </div>
   </a>
 
-  <a href="/varaibles/fonts.html" class="__hopin__c-home-item--link">
+  <a href="/variables/fonts.html" class="__hopin__c-home-item--link">
     <div class="__hopin__c-home-item">
       <div class="__hopin__c-home-item--content">
         ABC

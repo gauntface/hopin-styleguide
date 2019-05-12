@@ -18,6 +18,8 @@ export async function build(dir: string) {
 
     await buildSite(path.join(__dirname, '..', 'template'), {
         outputPath: "../generated-styleguide",
+        navigationFile: "./content/navigation.json",
+        themePath: dir,
     } as Config);
 }
 

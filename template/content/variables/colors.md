@@ -2,7 +2,7 @@
 title: Colors
 styles:
   inline:
-    - ../components/swatch/swatch.css
+    - ../../components/swatch-item/swatch-item.css
   sync:
     - /gauntface/styleguide.css
     - /gauntface/variables/_primary-colors.css

@@ -1,0 +1,18 @@
+---
+partials:
+  - ./images/colors-symbol.svg
+---
+{{#each .}}
+    Key: {{@key}} Value = {{this}}
+{{/each}}
+
+<a href="{{link}}" class="__hopin__c-home-item--link">
+    <div class="__hopin__c-home-item">
+      <div class="__hopin__c-home-item--content">
+        {{> ./images/colors-symbol.svg}}
+      </div>
+      <div class="__hopin__c-home-item--footer">
+        <p>{{title}}</p>
+      </div>
+    </div>
+  </a>
