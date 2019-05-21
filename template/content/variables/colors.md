@@ -8,10 +8,9 @@ styles:
     - /gauntface/variables/_primary-colors.css
     - /gauntface/variables/_secondary-colors.css
 scripts:
-  sync:
-    - /scripts/colors.js
+  inline:
+    - ../scripts/colors.js
 ---
-
 # Colors
 
 The color palette is derived from CSS variables defined in CSS files ending in `colors.css`

@@ -1,83 +1,37 @@
 ---
 title: Styleguide
-styles:
-  inline:
-    - ../components/home-item/home-item.css
-partials:
-  - ../components/home-item/images/colors-symbol.svg
-  - ../components/home-item/images/dimens-symbol.svg
-  - ../components/home-item/images/layout-symbol.svg
-  - ../components/home-item/images/component-symbol.svg
-  - ../components/home-item/home-item.tmpl
 ---
 
-{{hopin_loadComponent "../components/home-item/home-item.tmpl" link="/variables/colors.html" title="Colors"}}
+{{hopin_loadComponent "../layouts/home-grid/home-grid-open.tmpl"}}
 
-<div class="__hopin__l-home-grid">
-  <a href="/variables/colors.html" class="__hopin__c-home-item--link">
-    <div class="__hopin__c-home-item">
-      <div class="__hopin__c-home-item--content">
-        {{> ../components/home-item/images/colors-symbol.svg}}
-      </div>
-      <div class="__hopin__c-home-item--footer">
-        <p>Colors</p>
-      </div>
-    </div>
-  </a>
+  {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
+    title="Colors" 
+    img="images/colors-symbol.svg"
+    link="/variables/colors.html"}}
 
-  <a href="/variables/dimensions.html" class="__hopin__c-home-item--link">
-    <div class="__hopin__c-home-item">
-      <div class="__hopin__c-home-item--content">
-        {{> ../components/home-item/images/dimens-symbol.svg}}
-      </div>
-      <div class="__hopin__c-home-item--footer">
-        <p>Dimensions</p>
-      </div>
-    </div>
-  </a>
+  {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
+    title="Dimensions" 
+    img="images/dimens-symbol.svg"
+    link="/variables/dimensions.html"}}
 
-  <a href="/variables/fonts.html" class="__hopin__c-home-item--link">
-    <div class="__hopin__c-home-item">
-      <div class="__hopin__c-home-item--content">
-        ABC
-      </div>
-      <div class="__hopin__c-home-item--footer">
-        <p>Fonts</p>
-      </div>
-    </div>
-  </a>
+  {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
+    title="Fonts"
+    content="ABC"
+    link="/variables/fonts.html"}}
 
-  <a href="/elements.html" class="__hopin__c-home-item--link">
-    <div class="__hopin__c-home-item">
-      <div class="__hopin__c-home-item--content">
-        {&nbsp;&nbsp;&nbsp;}
-      </div>
-      <div class="__hopin__c-home-item--footer">
-        <p>HTML Elements</p>
-      </div>
-    </div>
-  </a>
+  {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
+    title="HTML Elements"
+    content="{   }"
+    link="/elements.html"}}
 
-  <a href="/components.html" class="__hopin__c-home-item--link">
-    <div class="__hopin__c-home-item">
-      <div class="__hopin__c-home-item--content">
-        {{> ../components/home-item/images/component-symbol.svg}}
-      </div>
-      <div class="__hopin__c-home-item--footer">
-        <p>Components</p>
-      </div>
-    </div>
-  </a>
+  {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
+    title="Components" 
+    img="images/component-symbol.svg"
+    link="/components.html"}}
 
-  <a href="/layouts.html" class="__hopin__c-home-item--link">
-    <div class="__hopin__c-home-item">
-      <div class="__hopin__c-home-item--content">
-        {{> ../components/home-item/images/layout-symbol.svg}}
-      </div>
-      <div class="__hopin__c-home-item--footer">
-        <p>Layouts</p>
-      </div>
-    </div>
-  </a>
+  {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
+    title="Layouts" 
+    img="images/layout-symbol.svg"
+    link="/layouts.html"}}
 
-</div>
+{{hopin_loadComponent "../layouts/home-grid/home-grid-close.tmpl"}}
