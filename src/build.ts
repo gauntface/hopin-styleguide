@@ -14,7 +14,7 @@ export async function build(dir: string) {
     
     const elements = await getElements(dir, theme.elements);
     const styleguide = await getStyleguide(dir,theme);
-    
+    console.log('Styleguide: ', styleguide);
     // TODO: Generate list of assets
 
     await buildSite(path.join(__dirname, '..', 'template'), {
@@ -74,10 +74,17 @@ async function getStyleguide(dir: string, theme: Theme): Promise<StyleguideConfi
         const styleguideBuffer = await fs.readFile(styleguidePath);
         const styleguideConfig = json5.parse(styleguideBuffer.toString()) as StyleguideConfig;
         const styleguideDir = path.dirname(styleguidePath);
-        for(let i = 0; i < styleguideConfig.colors.length; i++) {
-            const s = styleguideConfig.colors[i];
-            if (!path.isAbsolute(s)) {
-                styleguideConfig.colors[i] = path.join('/', theme.assets.outputdir, s);
+        
+        const keys = ['colors', 'dimensions', 'fonts'];
+        for (const k of keys) {
+            if (!styleguideConfig[k]) {
+                continue;
+            }
+            for(let i = 0; i < styleguideConfig[k].length; i++) {
+                const s = styleguideConfig[k][i];
+                if (!path.isAbsolute(s)) {
+                    styleguideConfig[k][i] = path.join('/', theme.assets.outputdir, s);
+                }
             }
         }
         return styleguideConfig;
@@ -106,6 +113,9 @@ interface HTMLElement {
 
 interface StyleguideConfig {
     colors: string[]
+    dimensions: string[]
+    fonts: string[]
+    [key: string]: string[];
 }
 
 interface StyleGroup {
