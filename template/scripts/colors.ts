@@ -35,11 +35,6 @@ class ColorPalette extends VariableGroup {
             // TODO: Use specific fonts applied to text instead of black and white
             const distanceToBlack = this.distance(this.hexToRGB(v.value), this.hexToRGB('#000000'));
             const distanceToWhite = this.distance(this.hexToRGB(v.value), this.hexToRGB('#FFFFFF'));
-    
-            console.log(`VALUE ${v.value}`);
-            console.log(`distance to black: ${distanceToBlack}`);
-            console.log(`distance to white: ${distanceToWhite}`);
-            console.log(``);
 
             if (distanceToBlack > distanceToWhite) {
               hexValue.classList.add(SWATCH_HEX_DARK_COLOR);
