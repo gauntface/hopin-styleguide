@@ -1,12 +1,8 @@
 ---
 title: Dimensions
-styles:
-  sync:
-    - /gauntface/styleguide.css
-    - /gauntface/variables/_dimens.css
 scripts:
-  sync:
-    - /scripts/dimensions.js
+  inline:
+    - ../../scripts/dimens.js
 ---
 
 # Dimensions

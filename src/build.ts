@@ -13,14 +13,17 @@ export async function build(dir: string) {
     const theme = await getThemeFile(dir);
     
     const elements = await getElements(dir, theme.elements);
-
+    const styleguide = await getStyleguide(dir,theme);
+    
     // TODO: Generate list of assets
 
     await buildSite(path.join(__dirname, '..', 'template'), {
         outputPath: "../generated-styleguide",
         navigationFile: "./content/navigation.json",
         themePath: dir,
-    } as Config);
+    } as Config, {
+        styleguide: styleguide,
+    });
 }
 
 async function getThemeFile(dir: string): Promise<Theme|null> {
@@ -61,14 +64,48 @@ async function getElements(dir: string, elementsFile: string): Promise<Array<HTM
     return null;
 }
 
+async function getStyleguide(dir: string, theme: Theme): Promise<StyleguideConfig> {
+    let styleguidePath = theme.styleguide;
+    if (!path.isAbsolute(styleguidePath)) {
+        styleguidePath = path.join(dir, styleguidePath);
+    }
+
+    try {
+        const styleguideBuffer = await fs.readFile(styleguidePath);
+        const styleguideConfig = json5.parse(styleguideBuffer.toString()) as StyleguideConfig;
+        const styleguideDir = path.dirname(styleguidePath);
+        for(let i = 0; i < styleguideConfig.colors.length; i++) {
+            const s = styleguideConfig.colors[i];
+            if (!path.isAbsolute(s)) {
+                styleguideConfig.colors[i] = path.join('/', theme.assets.outputdir, s);
+            }
+        }
+        return styleguideConfig;
+    } catch (e) {
+        logger.error(`Unable to read styleguide path: ${styleguidePath}`, e);
+    }
+    return null;
+}
+
 interface Theme {
     elements: string
+    styleguide: string
+    assets: Assets
+}
+
+interface Assets {
+    dir: string
+    outputdir: string
 }
 
 interface HTMLElement {
     tag: string
     styles: StyleGroup
     scripts: ScriptGroup
+}
+
+interface StyleguideConfig {
+    colors: string[]
 }
 
 interface StyleGroup {

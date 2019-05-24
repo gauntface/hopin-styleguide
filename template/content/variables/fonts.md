@@ -1,12 +1,8 @@
 ---
 title: Fonts
-styles:
-  sync:
-    - /gauntface/styleguide.css
-    - /gauntface/variables/_fonts.css
 scripts:
-  sync:
-    - /scripts/fonts.js
+  inline:
+    - ../../scripts/fonts.js
 ---
 
 # Fonts

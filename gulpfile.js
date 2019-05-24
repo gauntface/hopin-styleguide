@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const fs = require('fs-extra');
 const {setConfig} = require('@hopin/wbt-config');
 const tsNode = require('@hopin/wbt-ts-node'); 
+const tsBrowser = require('@hopin/wbt-ts-browser'); 
 
 const src = path.join(__dirname, 'src');
 const dst = path.join(__dirname, 'build');
@@ -16,6 +17,12 @@ gulp.task('clean', async () => {
 gulp.task('build',
   gulp.series(
     'clean',
-    tsNode.gulpBuild()
+    gulp.parallel(
+      tsNode.gulpBuild(),
+      tsBrowser.gulpBuild('hopin.styleguide', {
+        src: path.join(__dirname, 'template'),
+        dst: path.join(__dirname, 'template', 'build'),
+      }),
+    ),
   )
 );
