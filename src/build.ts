@@ -14,7 +14,7 @@ export async function build(dir: string) {
     
     const elements = await getElements(dir, theme.elements);
     const styleguide = await getStyleguide(dir,theme);
-    console.log('Styleguide: ', styleguide);
+
     // TODO: Generate list of assets
 
     await buildSite(path.join(__dirname, '..', 'template'), {

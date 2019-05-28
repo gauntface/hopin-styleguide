@@ -14,8 +14,6 @@ export abstract class VariableGroup {
                     continue;
                 }
 
-                console.log(s.href);
-
                 if (s.href.lastIndexOf(this.fileSuffix) !== s.href.length - this.fileSuffix.length) {
                     continue;
                 }
