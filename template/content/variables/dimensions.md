@@ -3,6 +3,12 @@ title: Dimensions
 scripts:
   inline:
     - ../../build/scripts/dimensions.js
+elements:
+  - table
+  - thead
+  - td
+  - th
+  - tr
 ---
 
 # Dimensions
