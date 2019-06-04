@@ -1,3 +1,18 @@
-{{hopin_loadComponent '../../components/header/header.tmpl'}}
+---
+styles:
+  inline:
+    - ./content.css
+---
+<div class="__hopin__l-main">
+  <div class="__hopin__l-main__header">
+    {{hopin_loadComponent '../../components/header/header.tmpl'}}
+  </div>
+  
+  <div class="__hopin__l-main__sidebar">
 
-{{content}}
+  </div>
+  
+  <div class="__hopin__l-main__content">
+    {{content}}
+  </div>
+</div>
