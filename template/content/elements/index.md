@@ -1,5 +1,6 @@
 ---
 title: Elements
+layout: ../../layouts/content/content.tmpl
 styles:
   sync:
     - /gauntface/styleguide.css

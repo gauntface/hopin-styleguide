@@ -1,5 +1,6 @@
 ---
 title: Styleguide
+layout: ../layouts/content/content.tmpl
 ---
 
 {{hopin_loadComponent "../layouts/home-grid/home-grid-open.tmpl"}}
@@ -22,7 +23,7 @@ title: Styleguide
   {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
     title="HTML Elements"
     content="{   }"
-    link="/elements.html"}}
+    link="/elements/"}}
 
   {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
     title="Components" 

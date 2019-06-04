@@ -11,7 +11,10 @@ const dst = path.join(__dirname, 'build');
 setConfig(src, dst);
 
 gulp.task('clean', async () => {
-    await fs.remove(dst);
+  await Promise.all([
+    fs.remove(dst),
+    fs.remove(path.join(__dirname, 'generated-styleguide')),
+  ]);
 });
 
 gulp.task('build',

@@ -1,5 +1,6 @@
 ---
 title: Typography
+layout: ../../layouts/content/content.tmpl
 scripts:
   inline:
     - ../../build/scripts/typography.js

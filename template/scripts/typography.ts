@@ -1,5 +1,6 @@
 const CONTAINER_CLASS = '__hopin__js-typography';
 const ORIG_TEXT_ATTRIB = '__hopin_typograhy_orig_text';
+const DETAILS_CLASS_SELECTOR = '__hopin__js-font-details';
 
 class Typography {
     container: HTMLElement;
@@ -45,9 +46,13 @@ class Typography {
                     elementToCheck.textContent = `${origText}${detailText}`
                 }
             } else {
-                const span = document.createElement('span');
+                let span = e.querySelector(`.${DETAILS_CLASS_SELECTOR}`);
+                if (!span) {
+                    span = document.createElement('span');
+                    span.classList.add(DETAILS_CLASS_SELECTOR);
+                    e.appendChild(span);
+                }
                 span.textContent = detailText;
-                e.appendChild(span);
             }
         }
     }
@@ -98,4 +103,7 @@ class Typography {
 window.addEventListener('load', () => {
     const t = new Typography();
     t.updateTypeInfo();
+    setInterval(() => {
+        t.updateTypeInfo();
+    }, 1000);
 });

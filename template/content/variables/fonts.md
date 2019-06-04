@@ -1,5 +1,6 @@
 ---
 title: Fonts
+layout: ../../layouts/content/content.tmpl
 ---
 
 # Fonts

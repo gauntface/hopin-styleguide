@@ -1,5 +1,6 @@
 ---
 title: Colors
+layout: ../../layouts/content/content.tmpl
 styles:
   inline:
     - ../../components/swatch-item/swatch-item.css

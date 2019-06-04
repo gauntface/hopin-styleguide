@@ -1,5 +1,6 @@
 ---
 title: CSS Naming
+layout: ../../layouts/content/content.tmpl
 scripts:
   inline:
     - ../../build/scripts/css-naming.js

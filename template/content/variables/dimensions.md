@@ -1,5 +1,6 @@
 ---
 title: Dimensions
+layout: ../../layouts/content/content.tmpl
 scripts:
   inline:
     - ../../build/scripts/dimensions.js
