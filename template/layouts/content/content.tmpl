@@ -2,17 +2,21 @@
 styles:
   inline:
     - ./content.css
+    - ../../variables/z-index.css
 ---
 <div class="__hopin__l-main">
+  <input type="checkbox" id="__hopin__l-main__sidebar-checkbox" />
+
   <div class="__hopin__l-main__header">
     {{hopin_loadComponent '../../components/header/header.tmpl'}}
-  </div>
-  
-  <div class="__hopin__l-main__sidebar">
-
   </div>
   
   <div class="__hopin__l-main__content">
     {{content}}
   </div>
+
+  <div class="__hopin__l-main__sidebar">
+
+  </div>
+  <label class="__hopin__l-main__backdrop" for="__hopin__l-main__sidebar-checkbox"></label>
 </div>

@@ -38,17 +38,27 @@ gulp.task('watch', () => {
     delay: 1000,
     ignoreInitial: false,
   };
+
   startServer();
+  
   gulp.watch([
-    'src/**/*', 
-    'template/**/*',
-    '!template/build/**/*',
-  ],
-  options,
-  gulp.series(
-    'build',
-    'build-demo',
-  ),
+      'src/**/*', 
+    ],
+    options,
+    gulp.series(
+      'build',
+      'build-demo',
+    ),
+  );
+
+  gulp.watch([
+      'template/**/*',
+      '!template/build/**/*',
+    ],
+    options,
+    gulp.series(
+      'build-demo',
+    ),
   );
 });
 

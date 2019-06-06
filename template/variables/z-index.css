@@ -1,0 +1,5 @@
+:root {
+  --hopin-main-backrop-z-index: 2;
+  --hopin-main-sidebar-z-index: 3;
+  --hopin-main-header-dropshadow-z-index: 4;
+}

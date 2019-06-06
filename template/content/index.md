@@ -1,5 +1,5 @@
 ---
-title: Styleguide
+title: Style Guide
 layout: ../layouts/content/content.tmpl
 ---
 
@@ -28,11 +28,11 @@ layout: ../layouts/content/content.tmpl
   {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
     title="Components" 
     img="images/component-symbol.svg"
-    link="/components.html"}}
+    link="/components/"}}
 
   {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
     title="Layouts" 
     img="images/layout-symbol.svg"
-    link="/layouts.html"}}
+    link="/layouts/"}}
 
 {{hopin_loadComponent "../layouts/home-grid/home-grid-close.tmpl"}}
