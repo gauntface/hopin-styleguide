@@ -34,17 +34,15 @@ gulp.task('build',
 );
 
 gulp.task('watch', () => {
-  const options = {
-    delay: 1000,
-    ignoreInitial: false,
-  };
-
   startServer();
   
   gulp.watch([
       'src/**/*', 
     ],
-    options,
+    {
+      delay: 1000,
+      ignoreInitial: false,
+    },
     gulp.series(
       'build',
       'build-demo',
@@ -55,7 +53,10 @@ gulp.task('watch', () => {
       'template/**/*',
       '!template/build/**/*',
     ],
-    options,
+    {
+      delay: 1000,
+      ignoreInitial: true,
+    },
     gulp.series(
       'build-demo',
     ),
