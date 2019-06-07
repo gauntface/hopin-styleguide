@@ -39,3 +39,13 @@
 .__hopin__c-header__link {
     text-decoration: none;
 }
+
+@media (min-width: 960px) {
+    .__hopin__c-header {
+        padding: 0 var(--hopin-main-content-hori-padding, 48px);
+    }
+
+    .__hopin__c-header__menu {
+        display: none;
+    }
+}
