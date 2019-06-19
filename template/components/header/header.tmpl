@@ -4,9 +4,12 @@ styles:
     - './header.css'
 ---
 <header class="__hopin__c-header">
-  <div class="__hopin__c-header__menu __hopin__js-menu-btn">
-    <label for="__hopin__l-main__sidebar-checkbox" class="__hopin__c-header__menu-label">{{ hopin_loadComponent "./menu.svg" }}</label>
+  <div class="__hopin__c-header__btn __hopin__c-header__menu">
+    <label for="__hopin__l-main__sidebar-checkbox">{{ hopin_loadComponent "./menu.svg" }}</label>
   </div>
   <div class="__hopin__c-header__logo"></div>
-  <div class="__hopin__c-header__title"><a class="__hopin__c-header__link"href="/">Style Guide</a></div>
+  <div class="__hopin__c-header__title"><a class="__hopin__c-header__link" href="/">Style Guide</a></div>
+  <div class="__hopin__c-header__btn">
+    <label for="__hopin__c-grid-overlay__checkbox">{{ hopin_loadComponent "./menu.svg" }}</label>
+  </div>
 </header>

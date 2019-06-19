@@ -39,7 +39,7 @@ This is a code block
 console.log('This is JavaScript.');
 ```
 
-```HTML
+```html
 <p>This is HTML.</p>
 ```
 
@@ -95,5 +95,5 @@ echo "This is bash"
 
 ![This is an example Image](https://images.unsplash.com/photo-1510843572979-e4b9e790fdd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1093&q=80)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/x2o-oy0o5Mo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x2o-oy0o5Mo" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

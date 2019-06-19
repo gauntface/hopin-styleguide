@@ -7,15 +7,15 @@
     background-color: var(--hopin-background-color, #dcdde1);
 }
 
-.__hopin__c-header__menu {
+.__hopin__c-header__btn {
     padding: var(--hopin-header-logo-hori-padding, 16px);
 }
 
-.__hopin__c-header__menu svg {
+.__hopin__c-header__btn svg {
     fill: var(--hopin-header-menu-color, black);
 }
 
-.__hopin__c-header__menu-label {
+.__hopin__c-header__btn-label {
     user-select: none;
 }
 
@@ -34,6 +34,7 @@
     color: var(--hopin-header-menu-color, black);
     font-weight: var(--hopin-header-font-weight, normal);
     font-size: var(--hopin-header-font-size, 24px);
+    flex: 1;
 }
 
 .__hopin__c-header__link {

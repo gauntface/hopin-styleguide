@@ -1,8 +1,8 @@
 ---
 styles:
   inline:
-    - ./content.css
     - ../../variables/z-index.css
+    - ./content.css
 ---
 <div class="__hopin__l-main">
   <input type="checkbox" id="__hopin__l-main__sidebar-checkbox" />
@@ -20,3 +20,5 @@ styles:
   </div>
   <label class="__hopin__l-main__backdrop" for="__hopin__l-main__sidebar-checkbox"></label>
 </div>
+
+{{hopin_loadComponent '../../components/grid-overlay/grid-overlay.tmpl'}}

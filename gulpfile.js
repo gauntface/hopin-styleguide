@@ -10,6 +10,7 @@ const {execSync} = require('child_process');
 
 const src = path.join(__dirname, 'src');
 const dst = path.join(__dirname, 'build');
+const themePath = '~/Projects/Code/gauntface-theme';
 
 setConfig(src, dst);
 
@@ -52,6 +53,7 @@ gulp.task('watch', () => {
   gulp.watch([
       'template/**/*',
       '!template/build/**/*',
+      `${themePath}/build/**/*`,
     ],
     {
       delay: 1000,
@@ -64,7 +66,7 @@ gulp.task('watch', () => {
 });
 
 gulp.task('build-demo', function() {
-  const stdOut = execSync(`node ./build/cli.js build --dir ~/Projects/Code/gauntface-theme`);
+  const stdOut = execSync(`node ./build/cli.js build --dir ${themePath}`);
   console.log(stdOut.toString());
   return Promise.resolve();
 });
