@@ -36,7 +36,7 @@ This is a code block
 ```
 
 ```javascript
-console.log('This is JavaScript.');
+console.log('This is JS.');
 ```
 
 ```html
@@ -93,7 +93,63 @@ echo "This is bash"
   </tbody>
 </table>
 
-![This is an example Image](https://images.unsplash.com/photo-1510843572979-e4b9e790fdd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1093&q=80)
+## Scalable Elements
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/x2o-oy0o5Mo" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+The following elements are unlikely to fit on the vetical grid.
 
+### Images
+
+This is an example of a small image that is also local.
+
+![This is an example Image](/images/small-img.jpg)
+
+This is an example of a large image that is remote.
+
+![This is a huge example Image](https://images.unsplash.com/photo-1510843572979-e4b9e790fdd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1093&q=80)
+
+This is an example of a gif.
+
+![This is an example gif](/images/ttt.gif)
+
+This is an example of a broken image.
+
+<p class="__hopin__u-img"><img src="/gauntface-theme/invalid-image-url" alt="Invalid sized image" width="300" height="300" /></p>
+
+This is an example of a broken image without a width or height attribute.
+
+<p class="__hopin__u-img"><img src="/gauntface-theme/invalid-image-url" alt="Invalid image" /></p>
+
+This is a picture element.
+
+![Example picture element](/images/raspberry-pi-snes.jpg)
+
+### Iframes
+
+Below is a YouTube iframe with a width and height attribute.
+
+<!-- Autoplay and width + height should be removed by hopin-static-site-gen -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x2o-oy0o5Mo?autoplay=1"></iframe>
+
+Below is a YouTube iframe without a width and height attribute.
+
+<iframe src="https://www.youtube.com/embed/x2o-oy0o5Mo?autoplay=1"></iframe>
+
+Below is a slideshare iframe without a width and height attribute.
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/tOZhdgk62sVxU" width="595" height="485" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+### Videos
+
+A video with width and height set.
+
+<video width="480" height="480" autoplay muted loop playsinline>
+  <source src="https://i.giphy.com/media/687qS11pXwjCM/giphy.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+A video without any attributes.
+
+<video>
+  <source src="https://i.giphy.com/media/687qS11pXwjCM/giphy.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>

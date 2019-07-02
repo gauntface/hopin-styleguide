@@ -23,7 +23,7 @@ layout: ../layouts/content/content.tmpl
   {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
     title="HTML Elements"
     content="{   }"
-    link="/elements/"}}
+    link="/elements/html.html"}}
 
   {{hopin_loadComponent "../components/home-item/home-item.tmpl" 
     title="Components" 

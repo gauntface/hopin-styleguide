@@ -44,7 +44,6 @@ See https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 
 .__hopin__l-main__sidebar {
   grid-area: sidebar;
-  background-color: var(--hopin-main-sidebar-bg-color, white);
   position: absolute;
   width: 280px;
   height: calc(100% - 80px);
@@ -93,6 +92,10 @@ See https://tobiasahlin.com/blog/how-to-animate-box-shadow/
   padding: var(--hopin-main-content-vert-padding, 45px) var(--hopin-main-content-hori-padding, 48px);
   grid-area: content;
   overflow-y: auto;
+}
+
+.__hopin__l-main__inner {
+  position: relative;
 }
 
 @media (min-width: 960px) {

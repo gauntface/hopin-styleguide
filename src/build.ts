@@ -14,15 +14,48 @@ export async function build(dir: string) {
     
     const elements = await getElements(dir, theme.elements);
     const styleguide = await getStyleguide(dir,theme);
+    const components = await getComponents(dir, theme);
+    const layouts = await getLayouts(dir, theme);
+
+    const tmpDir = path.join(__dirname, '..', 'tmp');
+    try {
+        await fs.remove(tmpDir);
+    } catch(err) {
+        // NOOP
+        console.error(`Failed to delete the tmp directory: `, err);
+    }
+    await fs.mkdirp(tmpDir);
+    await fs.copy(
+        path.join(__dirname, '..', 'template'),
+        tmpDir
+    );
+
+    for (const l of layouts) {
+        const lPath = path.join(tmpDir, "content", "layouts", `${l.slug}.md`)
+        await fs.writeFile(lPath, `---
+layout: ${l.path}
+title: Example Title
+---
+This is example content.
+`);    
+    }
 
     // TODO: Generate list of assets
 
-    await buildSite(path.join(__dirname, '..', 'template'), {
+    await buildSite(tmpDir, {
         outputPath: "../generated-styleguide",
         navigationFile: "./content/navigation.json",
         themePath: dir,
+        styles: {
+            inline: styleguide.styles,
+        },
+        scripts: {
+            inline: styleguide.scripts,
+        },
     } as Config, {
-        styleguide: styleguide,
+        components,
+        layouts,
+        styleguide,
     });
 }
 
@@ -75,8 +108,8 @@ async function getStyleguide(dir: string, theme: Theme): Promise<StyleguideConfi
         const styleguideConfig = json5.parse(styleguideBuffer.toString()) as StyleguideConfig;
         const styleguideDir = path.dirname(styleguidePath);
         
-        const keys = ['colors', 'dimensions', 'fonts'];
-        for (const k of keys) {
+        const urlKeys = ['colors', 'dimensions', 'fonts'];
+        for (const k of urlKeys) {
             if (!styleguideConfig[k]) {
                 continue;
             }
@@ -87,6 +120,19 @@ async function getStyleguide(dir: string, theme: Theme): Promise<StyleguideConfi
                 }
             }
         }
+
+        const keys = ['styles', 'scripts'];
+        for (const k of keys) {
+            if (!styleguideConfig[k]) {
+                continue;
+            }
+            for(let i = 0; i < styleguideConfig[k].length; i++) {
+                const s = styleguideConfig[k][i];
+                if (!path.isAbsolute(s)) {
+                    styleguideConfig[k][i] = path.join(styleguideDir, s);
+                }
+            }
+        }
         return styleguideConfig;
     } catch (e) {
         logger.error(`Unable to read styleguide path: ${styleguidePath}`, e);
@@ -94,10 +140,70 @@ async function getStyleguide(dir: string, theme: Theme): Promise<StyleguideConfi
     return null;
 }
 
+async function getComponents(dir: string, theme: Theme): Promise<Array<ComponentConfig>> {
+    let componentsPath = theme.components;
+    if (!path.isAbsolute(componentsPath)) {
+        componentsPath = path.join(dir, componentsPath);
+    }
+
+    try {
+        const componentsBuffer = await fs.readFile(componentsPath);
+        const componentsConfig = json5.parse(componentsBuffer.toString()) as Array<ComponentConfig>;
+        const parsedComponents: Array<ComponentConfig> = [];
+        for (let i = 0; i < componentsConfig.length; i++) {
+            const c = componentsConfig[i];
+            c.path = path.join(path.dirname(componentsPath), c.path);
+            parsedComponents.push(c);
+        }
+        return parsedComponents;
+    } catch (e) {
+        logger.error(`Unable to read component path: ${componentsPath}`, e);
+    }
+    return null;
+}
+
+async function getLayouts(dir: string, theme: Theme): Promise<Array<LayoutConfig>> {
+    let layoutsPath = theme.layouts;
+    if (!layoutsPath) {
+        return [];
+    }
+    if (!path.isAbsolute(layoutsPath)) {
+        layoutsPath = path.join(dir, layoutsPath);
+    }
+
+    try {
+        const layoutsBuffer = await fs.readFile(layoutsPath);
+        const layoutsConfig = json5.parse(layoutsBuffer.toString()) as Array<LayoutConfig>;
+        const parsedLayouts: Array<LayoutConfig> = [];
+        for (let i = 0; i < layoutsConfig.length; i++) {
+            const c = layoutsConfig[i];
+            c.path = path.join(path.dirname(layoutsPath), c.path);
+            parsedLayouts.push(c);
+        }
+        return parsedLayouts;
+    } catch (e) {
+        logger.error(`Unable to read layout path: ${layoutsPath}`, e);
+    }
+    return null;
+}
+
 interface Theme {
     elements: string
     styleguide: string
+    components: string
+    layouts: string
     assets: Assets
+}
+
+interface ComponentConfig {
+    name: string
+    path: string
+}
+
+interface LayoutConfig {
+    name: string
+    slug: string
+    path: string
 }
 
 interface Assets {
@@ -112,9 +218,8 @@ interface HTMLElement {
 }
 
 interface StyleguideConfig {
-    colors: string[]
-    dimensions: string[]
-    fonts: string[]
+    styles: string[];
+    scripts: string[];
     [key: string]: string[];
 }
 

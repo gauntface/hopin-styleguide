@@ -37,6 +37,10 @@
     flex: 1;
 }
 
+.__hopin__c-header__title a {
+    color: inherit;
+}
+
 .__hopin__c-header__link {
     text-decoration: none;
 }

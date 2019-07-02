@@ -10,7 +10,7 @@ const {execSync} = require('child_process');
 
 const src = path.join(__dirname, 'src');
 const dst = path.join(__dirname, 'build');
-const themePath = '~/Projects/Code/gauntface-theme';
+const themePath = path.join(require('os').homedir(), '/Projects/Code/gauntface-theme');
 
 setConfig(src, dst);
 
@@ -53,7 +53,6 @@ gulp.task('watch', () => {
   gulp.watch([
       'template/**/*',
       '!template/build/**/*',
-      `${themePath}/build/**/*`,
     ],
     {
       delay: 1000,
@@ -63,12 +62,30 @@ gulp.task('watch', () => {
       'build-demo',
     ),
   );
+
+  gulp.watch([
+      path.join(themePath, 'build', '**', '*'),
+    ], {
+      delay: 1000,
+      queue: true,
+      ignoreInitial: true,
+      usePolling: true,
+    },
+    gulp.series(
+      'build-demo',
+    ),  
+  )
 });
 
 gulp.task('build-demo', function() {
-  const stdOut = execSync(`node ./build/cli.js build --dir ${themePath}`);
-  console.log(stdOut.toString());
-  return Promise.resolve();
+  try {
+    const stdOut = execSync(`node ./build/cli.js build --dir ${themePath}`);
+    console.log(stdOut.toString());
+    return Promise.resolve();
+  } catch (err) {
+    console.log('ERROR -----------------> ', err, err.stdout.toString());
+    return Promise.reject(err);
+  }
 });
 
 const staticDir = path.resolve(__dirname, 'generated-styleguide');

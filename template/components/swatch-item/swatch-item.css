@@ -17,7 +17,7 @@
     flex-direction: column;
 
     width: 100%;
-    height: var(--hopin-swatch-height-mobile, 100px);
+    height: var(--hopin-swatch-height-mobile, 96px);
 
     box-sizing: border-box;
     border-style: solid;
