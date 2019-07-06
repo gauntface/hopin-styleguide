@@ -28,7 +28,7 @@
     "@types/json5": "0.0.30",
     "@types/meow": "^5.0.0",
     "express": "^4.17.1",
-    "fs-extra": "8.1.1",
+    "fs-extra": "8.1.0",
     "gulp": "4.0.2",
     "serve-index": "^1.9.1"
   },
