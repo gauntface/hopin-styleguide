@@ -83,7 +83,7 @@ gulp.task('build-demo', function() {
     console.log(stdOut.toString());
     return Promise.resolve();
   } catch (err) {
-    console.log('ERROR -----------------> ', err, err.stdout.toString());
+    console.log('Failed to build demo:', err, err.stdout.toString());
     return Promise.reject(err);
   }
 });

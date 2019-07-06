@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "A styleguide generation tool",
   "scripts": {
+    "build": "gulp build",
+    "build-demo": "gulp build-demo",
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "static-site": "hopin-static-site",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run build && npm run build-demo"
   },
   "repository": {
     "type": "git",
