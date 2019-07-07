@@ -20,15 +20,19 @@ gulp.task('clean', async () => {
   ]);
 });
 
+gulp.task('build-template', gulp.series(
+  tsBrowser.gulpBuild('hopin.styleguide', {
+    src: path.join(__dirname, 'template'),
+    dst: path.join(__dirname, 'template', 'build'),
+  }),
+))
+
 gulp.task('build',
   gulp.series(
     'clean',
     gulp.parallel(
       tsNode.gulpBuild(),
-      tsBrowser.gulpBuild('hopin.styleguide', {
-        src: path.join(__dirname, 'template'),
-        dst: path.join(__dirname, 'template', 'build'),
-      }),
+      'build-template',
     ),
   )
 );
@@ -58,12 +62,13 @@ gulp.task('watch', () => {
       ignoreInitial: true,
     },
     gulp.series(
+      'build-template',
       'build-demo',
     ),
   );
 
   gulp.watch([
-      path.join(themePath, 'build', '**', '*'),
+      path.join(getTheme(), 'build', '**', '*'),
     ], {
       delay: 1000,
       queue: true,
@@ -78,8 +83,7 @@ gulp.task('watch', () => {
 
 gulp.task('build-demo', function() {
   try {
-    const themePath = require.resolve('gauntface-theme/theme.json5');
-    const stdOut = execSync(`node ./build/cli.js build --dir ${path.dirname(themePath)}`);
+    const stdOut = execSync(`node ./build/cli.js build --dir ${getTheme()}`);
     console.log(stdOut.toString());
     return Promise.resolve();
   } catch (err) {
@@ -111,4 +115,8 @@ function startServer() {
       }
     });
   });
+}
+
+function getTheme() {
+  return path.dirname(require.resolve('gauntface-theme/theme.json5'));
 }
