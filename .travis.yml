@@ -11,6 +11,7 @@ node_js:
   - "lts/*"
 
 script:
+- npm install gauntface-theme
 - npm run test
 
 # after_script:

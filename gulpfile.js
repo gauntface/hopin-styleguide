@@ -10,7 +10,6 @@ const {execSync} = require('child_process');
 
 const src = path.join(__dirname, 'src');
 const dst = path.join(__dirname, 'build');
-const themePath = path.join(require('os').homedir(), '/Projects/Code/gauntface-theme');
 
 setConfig(src, dst);
 
@@ -79,11 +78,16 @@ gulp.task('watch', () => {
 
 gulp.task('build-demo', function() {
   try {
-    const stdOut = execSync(`node ./build/cli.js build --dir ${themePath}`);
+    const themePath = require.resolve('gauntface-theme/theme.json5');
+    const stdOut = execSync(`node ./build/cli.js build --dir ${path.dirname(themePath)}`);
     console.log(stdOut.toString());
     return Promise.resolve();
   } catch (err) {
-    console.log('Failed to build demo:', err, err.stdout.toString());
+    if (err.stdout) {
+      console.log('Failed to build demo:', err, err.stdout.toString());
+    } else {
+      console.log('Failed to build demo:', err);
+    }
     return Promise.reject(err);
   }
 });
