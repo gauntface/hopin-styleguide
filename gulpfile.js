@@ -1,14 +1,12 @@
 const path = require('path');
-const {exec} = require('child_process');
-const http = require('http');
 const gulp = require('gulp');
 const fs = require('fs-extra');
-const {setConfig} = require('@hopin/wbt-config');
-const tsBrowser = require('@hopin/wbt-ts-browser'); 
-const css = require('@hopin/wbt-css');
-const serveStatic = require('serve-static');
+const express = require('express');
 const serveIndex = require('serve-index');
-const finalhandler = require('finalhandler');
+const {setConfig} = require('@hopin/wbt-config');
+const tsNode = require('@hopin/wbt-ts-node'); 
+const tsBrowser = require('@hopin/wbt-ts-browser'); 
+const {execSync} = require('child_process');
 
 const src = path.join(__dirname, 'src');
 const dst = path.join(__dirname, 'build');
@@ -16,71 +14,101 @@ const dst = path.join(__dirname, 'build');
 setConfig(src, dst);
 
 gulp.task('clean', async () => {
-    await fs.remove(dst);
+  await Promise.all([
+    fs.remove(dst),
+    fs.remove(path.join(__dirname, 'generated-styleguide')),
+  ]);
 });
-
-gulp.task('copy',
-  gulp.parallel(
-    () => gulp.src(path.join(src, '**', '*.{html,svg}')).pipe(gulp.dest(dst)),
-    () => gulp.src(path.join(__dirname, 'example', '**', '*')).pipe(gulp.dest(path.join(dst, 'example'))),
-    () => gulp.src(path.join(__dirname, 'gauntface', '**', '*')).pipe(gulp.dest(path.join(dst, 'gauntface'))),
-    () => gulp.src(path.join(__dirname, 'third_party', '**', '*')).pipe(gulp.dest(path.join(dst, 'third_party'))),
-  ),
-);
-
-gulp.task('css', css.gulpBuild());
-
-gulp.task('ts', tsBrowser.gulpBuild('hopin.styleguide'));
-
-gulp.task('static-site', (done) => exec('npm run static-site', (err, stdout, stderr) => {
-  if (stdout) {
-    console.log(stdout);
-  }
-  if (stderr) {
-    console.log(stderr);
-  }
-  done(err);
-}));
 
 gulp.task('build',
   gulp.series(
     'clean',
     gulp.parallel(
-      'copy',
-      'css',
-      'ts',
+      tsNode.gulpBuild(),
+      tsBrowser.gulpBuild('hopin.styleguide', {
+        src: path.join(__dirname, 'template'),
+        dst: path.join(__dirname, 'template', 'build'),
+      }),
     ),
-    'static-site',
   )
 );
 
-gulp.task('server', () => {
-  const index = serveIndex(dst, {'icons': true});
-  const serve = serveStatic(dst);
-  const server = http.createServer(function onRequest(req, res){
-    const done = finalhandler(req, res);
-    serve(req, res, function onNext(err) {
-      if (err) return done(err);
-      index(req, res, done);
-    })
-  });
-  server.listen(9000);
+gulp.task('watch', () => {
+  startServer();
+  
+  gulp.watch([
+      'src/**/*', 
+    ],
+    {
+      delay: 1000,
+      ignoreInitial: false,
+    },
+    gulp.series(
+      'build',
+      'build-demo',
+    ),
+  );
+
+  gulp.watch([
+      'template/**/*',
+      '!template/build/**/*',
+    ],
+    {
+      delay: 1000,
+      ignoreInitial: true,
+    },
+    gulp.series(
+      'build-demo',
+    ),
+  );
+
+  gulp.watch([
+      path.join(themePath, 'build', '**', '*'),
+    ], {
+      delay: 1000,
+      queue: true,
+      ignoreInitial: true,
+      usePolling: true,
+    },
+    gulp.series(
+      'build-demo',
+    ),  
+  )
 });
 
-gulp.task('watch', gulp.parallel(
-  'server',
-  () => {
-    const opts = {
-      ignoreInitial: false,
-      ignored: [
-        path.join(dst, '**', '*'),
-        path.join(__dirname, 'node_modules', '**', '*'),
-      ],
-      queue: true,
-    };
-    gulp.watch(path.join(__dirname, '**', '*.ts'), opts, gulp.series('ts', 'static-site'));
-    gulp.watch(path.join(__dirname, '**', '*.css'), opts, gulp.series('css', 'static-site'));
-    gulp.watch(path.join(__dirname, '**', '*'), opts, gulp.series('copy'));
-    gulp.watch(path.join(__dirname, '**', '*.{md,tmpl,svg}'), opts, gulp.series('static-site'));
-  },
-));
+gulp.task('build-demo', function() {
+  try {
+    const themePath = require.resolve('gauntface-theme/theme.json5');
+    const stdOut = execSync(`node ./build/cli.js build --dir ${path.dirname(themePath)}`);
+    console.log(stdOut.toString());
+    return Promise.resolve();
+  } catch (err) {
+    if (err.stdout) {
+      console.log('Failed to build demo:', err, err.stdout.toString());
+    } else {
+      console.log('Failed to build demo:', err);
+    }
+    return Promise.reject(err);
+  }
+});
+
+const staticDir = path.resolve(__dirname, 'generated-styleguide');
+const PORT = 9000;
+const app = express();
+app.use(
+  express.static(staticDir),
+  serveIndex(staticDir, {'icons': true})
+);
+
+function startServer() {
+  return new Promise((resolve, reject) => {
+    app.listen(PORT, (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        console.log(`The server is running @ http://localhost:${PORT}`);
+        resolve();
+      }
+    });
+  });
+}

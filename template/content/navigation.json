@@ -1,0 +1,17 @@
+[
+  {
+    "path": "index.md"
+  },
+  {
+    "path": "./variables/colors.md"
+  },
+  {
+    "path": "./variables/dimensions.md"
+  },
+  {
+    "path": "./variables/fonts.md"
+  },
+  {
+    "path": "./elements/typography.md"
+  },
+]
