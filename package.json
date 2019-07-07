@@ -24,7 +24,7 @@
     "@hopin/wbt-css": "0.0.20",
     "@hopin/wbt-ts-browser": "0.0.20",
     "@hopin/wbt-ts-node": "0.0.20",
-    "@types/fs-extra": "7.0.0",
+    "@types/fs-extra": "8.0.0",
     "@types/json5": "0.0.30",
     "@types/meow": "5.0.0",
     "express": "4.17.1",
