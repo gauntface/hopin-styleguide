@@ -47,10 +47,14 @@ export function createTable(data: VARIABLE_TABLE): HTMLElement {
         const row = document.createElement('tr');
         for (const rd of r) {
             const col = document.createElement('td');
-            if (typeof rd === 'string') {
-                col.textContent = rd;
-            } else {
+            if (rd instanceof HTMLElement) {
                 col.appendChild(rd);
+            } else if (typeof rd === 'string') {
+                col.textContent = rd;
+            } else if (rd['variable']) {
+                // This occurs if the CSS variable
+                // is an assignment of another CSS variable.
+                col.textContent = rd['variable'];
             }
             row.appendChild(col);
         }

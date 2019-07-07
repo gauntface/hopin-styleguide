@@ -35,11 +35,11 @@ export abstract class VariableGroup {
                             // The format of e is ["<param name>", [["<value>"]]]
                             const name = e[0] as string;
                             if (name.indexOf('--') === 0) {
-                                const value = e[1][0][0];
+                                let unparsedValue = e[1][0] as CSSUnparsedValue;
                                 group.variables.push({
                                     prettyName: friendlyName(name),
                                     variableName: name,
-                                    value,
+                                    value: unparsedValue.toString(),
                                 });
                             }
                         }
