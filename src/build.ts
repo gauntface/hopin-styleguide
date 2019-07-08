@@ -31,7 +31,7 @@ export async function build(dir: string) {
     );
 
     for (const l of layouts) {
-        const lPath = path.join(tmpDir, "content", "layouts", `${l.slug}.md`)
+        const lPath = path.join(tmpDir, "content", "layouts", `${l.id}.md`)
         await fs.writeFile(lPath, `---
 layout: ${l.path}
 title: Example Title
@@ -202,7 +202,7 @@ interface ComponentConfig {
 
 interface LayoutConfig {
     name: string
-    slug: string
+    id: string
     path: string
 }
 
