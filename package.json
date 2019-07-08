@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@hopin/static-site": "2.0.0",
-    "gauntface-theme": "1.0.3",
+    "gauntface-theme": "1.0.4",
     "json5": "2.1.0",
     "meow": "5.0.0"
   }
