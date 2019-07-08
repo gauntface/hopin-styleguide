@@ -13,6 +13,6 @@ and will include samples of the layouts where provided.
 
 {{#layouts}}
 
-<a href="./{{slug}}.html">{{ name }}</a>
+<a href="./{{id}}.html">{{ name }}</a>
 
 {{/layouts}}
