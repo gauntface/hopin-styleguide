@@ -61,6 +61,9 @@ echo "This is bash"
 - This is the second item
     - This is an indented list
     - And it's second item
+    - This item has multiple paragraphs
+
+        This is the second paragraph
 - This is the third item
 - This is the last item
 
@@ -68,6 +71,9 @@ echo "This is bash"
 1. This is the second item
     1. This is an idented list
     1. And it's second item
+    1. This item has multiple paragraphs
+
+        This is the second paragraph
 1. This is the third item
 1. This is the last item
 
