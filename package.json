@@ -1,6 +1,6 @@
 {
   "name": "@hopin/styleguide",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A styleguide generation tool",
   "scripts": {
     "build": "gulp build",
@@ -20,7 +20,7 @@
     "url": "https://github.com/gauntface/hopin-styleguide/issues"
   },
   "bin": {
-    "@hopin/stylguide" : "./build/cli.js"
+    "@hopin/stylguide": "./build/cli.js"
   },
   "homepage": "https://github.com/gauntface/hopin-styleguide#readme",
   "devDependencies": {
