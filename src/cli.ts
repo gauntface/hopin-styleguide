@@ -84,9 +84,7 @@ async function run() {
             }, () => {
                 console.log('TODO: Rebuild the styleguide');
                 onChange();
-            })
-            
-            // TODO: Start server in directory
+            });
             break;
         }
         default:
