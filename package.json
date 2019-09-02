@@ -1,6 +1,6 @@
 {
   "name": "@hopin/styleguide",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A styleguide generation tool",
   "scripts": {
     "build": "gulp build",
