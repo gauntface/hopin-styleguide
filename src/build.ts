@@ -7,7 +7,7 @@ import {prettyPath} from './utils/prettypath';
 
 const THEME_FILE = 'theme.json5';
 
-export async function build(dir: string) {
+export async function build(dir: string): Promise<string> {
     logger.log(`Building styleguide for theme in: ${prettyPath(dir)}`);
 
     const theme = await getThemeFile(dir);
@@ -42,8 +42,10 @@ This is example content.
 
     // TODO: Generate list of assets
 
+    const outputDir = path.join(__dirname, "..", "generated-styleguide")
+
     await buildSite(tmpDir, {
-        outputPath: "../generated-styleguide",
+        outputPath: outputDir,
         navigationFile: "./content/navigation.json",
         themePath: dir,
         styles: {
@@ -57,6 +59,8 @@ This is example content.
         layouts,
         styleguide,
     });
+
+    return outputDir
 }
 
 async function getThemeFile(dir: string): Promise<Theme|null> {
