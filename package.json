@@ -20,7 +20,7 @@
     "url": "https://github.com/gauntface/hopin-styleguide/issues"
   },
   "bin": {
-    "@hopin/stylguide": "./build/cli.js"
+    "hopin-stylguide": "./build/cli.js"
   },
   "homepage": "https://github.com/gauntface/hopin-styleguide#readme",
   "devDependencies": {
