@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/gauntface/hopin-styleguide/issues"
   },
+  "bin": {
+    "@hopin/stylguide" : "./build/cli.js"
+  },
   "homepage": "https://github.com/gauntface/hopin-styleguide#readme",
   "devDependencies": {
     "@hopin/wbt-css": "0.0.20",
