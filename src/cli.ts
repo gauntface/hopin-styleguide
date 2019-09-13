@@ -66,23 +66,27 @@ async function run() {
                 });
             });
 
-            console.log(`The server is running @ http://localhost:${port}`);
+            logger.log(`The server is running @ http://localhost:${port}`);
 
             let buildChain: Promise<String|void> = Promise.resolve();
             const onChange = () => {
-                console.log('Rebuilding the styleguide...');
                 buildChain = buildChain
-                    .then(() => build(dir))
+                    .then(() => {
+                      logger.log('Rebuilding the styleguide...');
+                      return build(dir);
+                    })
                     .catch(() => {
                         // Retry after 3s in case the files have
                         // stabilized.
-                        setTimeout(onChange, 3000)
+                        return new Promise((resolve) => {
+                          setTimeout(resolve, 3000);
+                        })
+                        .then(onChange);
                     });
             }
             fs.watch(dir, {
                 recursive: true,
             }, () => {
-                console.log('TODO: Rebuild the styleguide');
                 onChange();
             });
             break;
