@@ -4,8 +4,10 @@ import * as meow from 'meow';
 import * as fs from 'fs';
 import * as express from 'express';
 import * as serveIndex from 'serve-index';
+import * as path from 'path';
 import {build} from './build';
 import {logger} from './utils/logger';
+import { pathExists } from 'fs-extra';
 
 const cli = meow(`
 	Usage
@@ -32,21 +34,20 @@ async function run() {
         return;
     }
     
+    let dir = cli.flags.dir;
+    if (!cli.flags.dir) {
+        dir = process.cwd();
+    }
+    if (!path.isAbsolute(dir)) {
+      dir = path.resolve(dir)
+    }
+    
     switch(cli.input[0]) {
         case 'build': {
-            let dir = cli.flags.dir;
-            if (!cli.flags.dir) {
-                dir = process.cwd();
-            }
             await build(dir);
             break;
         }
         case 'serve': {
-            let dir = cli.flags.dir;
-            if (!cli.flags.dir) {
-                dir = process.cwd();
-            }
-
             const outputPath = await build(dir);
             
             const PORT = 9000;
