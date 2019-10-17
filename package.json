@@ -37,7 +37,7 @@
     "gulp": "4.0.2"
   },
   "dependencies": {
-    "@hopin/static-site": "2.1.1",
+    "@hopin/static-site": "2.1.2",
     "express": "4.17.1",
     "gauntface-theme": "1.0.11",
     "json5": "2.1.1",
