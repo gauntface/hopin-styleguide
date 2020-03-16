@@ -40,7 +40,7 @@
     "@hopin/static-site": "2.1.2",
     "express": "4.17.1",
     "gauntface-theme": "1.0.11",
-    "json5": "2.1.1",
+    "json5": "2.1.2",
     "meow": "6.0.1",
     "serve-index": "1.9.1"
   }
