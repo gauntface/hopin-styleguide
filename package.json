@@ -41,7 +41,7 @@
     "express": "4.17.1",
     "gauntface-theme": "1.0.11",
     "json5": "2.1.3",
-    "meow": "7.0.0",
+    "meow": "7.0.1",
     "serve-index": "1.9.1"
   }
 }
