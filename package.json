@@ -32,7 +32,7 @@
     "@types/json5": "0.0.30",
     "@types/meow": "5.0.0",
     "@types/serve-index": "1.7.30",
-    "@types/w3c-css-typed-object-model-level-1": "20180410.0.1",
+    "@types/w3c-css-typed-object-model-level-1": "20180410.0.2",
     "fs-extra": "9.0.0",
     "gulp": "4.0.2"
   },
